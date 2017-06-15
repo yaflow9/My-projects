@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    
+    <!-- My fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Aclonica|Alef|Allerta+Stencil" rel="stylesheet">
+    
+    <link href="index.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+  	<div class="box">
+  		<h1>Input :</h1>
+  		
+  		<p id="toBeToggled">
+  			This document is being made to create secret messages.<br>
+  			For this, you will need to present the text you want to crypt on the upper box. You will need to create a key to crypt the text. Then, you will be able to click on <cite>'code'</cite> <br>
+  			<strong>/!\ Warnings : do not lose the key, it needs to be given to the receiver of the secret message to make it understandable.</strong> <br>
+  			If you get a secret message to decrypt, place it in the box named crypted. Add the key and click on decrypt.<br>
+  			Click on this text to make it disapear.
+  		</p>
+  		
+  		<form>
+  			<input type='text' id="normal" placeholder="normal"> <br>
+  			<input type="text" id="key" placeholder="key"> <br>
+  			<input type="text" id="crypted" placeholder="crypted"> <br> 
+  		</form>
+  		<button id="code">Code</button>
+  		<button id="decode">Decode</button>
+	</div>
+    <script src="index.js"></script>
+  </body>
+</html>
