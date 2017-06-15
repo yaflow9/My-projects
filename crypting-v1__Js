@@ -1,0 +1,57 @@
+var jquery = require('jquery');
+
+$(document).ready(function() {
+	$('#code').click(function() {
+		var input = $('#normal').val().toLowerCase();
+		var key = $('#key').val().toLowerCase();
+		var codeOutput = code(input,key);
+		$('#crypted').val(codeOutput);
+	});
+	$('#decode').click(function() {
+		var input = $('#crypted').val().toLowerCase();
+		var key = $('#key').val().toLowerCase();
+		var codeOutput = decode(input,key);
+		$('#normal').val(codeOutput);
+	});
+	$('#toBeToggled').click(function(){
+		$(this).animate({
+        height: '1px',
+        opacity: '0'
+    	});
+	});
+});
+
+var alphabet = "abcdefghijklmnopqrstuvwxyz0123456789 .,!'";
+
+function code(input,key){ //crypt the text
+	var code_alphabet = alphabet;
+	for (keychar = 0; keychar < key.length ;keychar++) {
+		var key1 = key.charAt(keychar);
+		var cesura = code_alphabet.indexOf(key1);
+		code_alphabet = code_alphabet.substring(cesura,code_alphabet.length) + code_alphabet.substring(0,cesura).split("").reverse().join("");
+	}
+	var newWord = '';
+	for (charpos = 0; charpos < input.length ; charpos++) {
+		var indexToGoTo = alphabet.indexOf(input.charAt(charpos));
+		var newLetter = code_alphabet.charAt(indexToGoTo);
+		newWord += newLetter;
+	}
+	return newWord;
+}
+
+function decode(input,key){ //uncrypt the text
+	var code_alphabet = alphabet;
+	for (keychar = 0; keychar < key.length ;keychar++) {
+		var key1 = key.charAt(keychar);
+		var cesura = code_alphabet.indexOf(key1);
+		code_alphabet = code_alphabet.substring(cesura,code_alphabet.length) + code_alphabet.substring(0,cesura).split("").reverse().join("");
+	}
+	var newWord = '';
+	for (charpos = 0; charpos < input.length ; charpos++) {
+		var indexToGoTo = code_alphabet.indexOf(input.charAt(charpos));
+		var newLetter = alphabet.charAt(indexToGoTo);
+		newWord += newLetter;
+	}
+	return newWord;
+}
+
